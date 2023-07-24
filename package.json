@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/RamonMangueira/DiscoBot/issues"
   },
-  "homepage": "https://github.com/RamonMangueira/DiscoBot#readme"
+  "homepage": "https://github.com/RamonMangueira/DiscoBot#readme",
+  "dependencies": {
+    "discord.js": "^14.11.0"
+  }
 }
