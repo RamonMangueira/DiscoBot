@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("discord.js");
 const { getpassword } = require("../services/senhaHoje");
+const wait = require("node:timers/promises").setTimeout;
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -7,9 +8,8 @@ module.exports = {
     .setDescription("Senha de hoje!"),
 
   async execute(interaction) {
+    await interaction.reply("Só um segundo, tá?");
     const password = await getpassword();
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(password);
-    await interaction.reply(password);
+    await interaction.editReply(password);
   },
 };

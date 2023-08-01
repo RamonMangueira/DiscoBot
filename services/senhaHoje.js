@@ -6,25 +6,16 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "../.env" });
 const { EMAIL, SENHA, LINK, LINKPAG } = process.env;
 
-//configurando navegador
-
-//Fazer login
-/* async function run() {
-  const password = await getpassword();
-  console.log(password);
-} */
-
-module.exports = {
-  getpassword: getpassword,
-};
-
+//Usando selenium para capturar senha
 async function getpassword() {
+  //configurando navegador
   const options = new chrome.Options();
   options.addArguments("--headless"); // Executar em modo headless (sem interface gráfica)
   const driver = new Builder()
     .forBrowser("chrome")
     .setChromeOptions(options)
     .build();
+
   await driver.get(LINK);
   driver.findElement(By.name("email")).sendKeys(EMAIL);
   driver.findElement(By.name("password")).sendKeys(SENHA, Key.ENTER);
@@ -38,3 +29,7 @@ async function getpassword() {
   await driver.quit();
   return senhaHoje;
 }
+
+module.exports = {
+  getpassword: getpassword,
+};
