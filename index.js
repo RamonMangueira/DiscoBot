@@ -30,7 +30,7 @@ for (const file of commandFiles) {
 
 // Login do bot
 client.once(Events.ClientReady, (c) => {
-  console.log(`Pronto! Login realizado como ${c.user.tag}`);
+  console.log(`Login realizado como ${c.user.tag}`);
 });
 client.login(TOKEN);
 

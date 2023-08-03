@@ -5,18 +5,18 @@ const wait = require("node:timers/promises").setTimeout;
 //configuração do dotenv
 const dotenv = require("dotenv");
 dotenv.config({ path: "../.env" });
-const { TEXTO } = process.env;
+const { TEXTO1, TEXTO2 } = process.env;
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName(TEXTO)
-    .setDescription("Fornece a senha de hoje da " + TEXTO + "!"),
+    .setName(TEXTO1)
+    .setDescription("Fornece a senha de hoje do " + TEXTO2 + "!"),
 
   async execute(interaction) {
-    await interaction.reply("Um momento Sr(a)");
-    const password = await getpassword();
-    await interaction.editReply(
-      "A senha de hoje na " + TEXTO + " é:\n" + password
+    now = new Date();
+    const password = now.getDate() * (now.getMonth() + 1);
+    await interaction.reply(
+      "A senha de hoje no " + TEXTO2 + " é:\n" + password
     );
   },
 };

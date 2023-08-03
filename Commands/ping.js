@@ -4,11 +4,9 @@ const wait = require("node:timers/promises").setTimeout;
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("ping")
-    .setDescription("Responde com 'Pong!"),
+    .setDescription("Teste de disponibilidade"),
 
   async execute(interaction) {
-    await interaction.reply("Pong!");
-    await wait(2000);
-    await interaction.editReply("Pong again!");
+    await interaction.reply("Bot online :kissing_heart: ");
   },
 };
